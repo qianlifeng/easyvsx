@@ -121,7 +121,6 @@
     <Compile Include="Core\AlwaysNewCollection.cs" />
     <Compile Include="Core\ConnectionModel.cs" />
     <Compile Include="Core\DelayExecute.cs" />
-    <Compile Include="Core\EasyVSStatistics.cs" />
     <Compile Include="Core\HtmlHelper.cs" />
     <Compile Include="Filter\CommentReplaceFilter.cs" />
     <Compile Include="Filter\AutoBraceFilter.cs" />

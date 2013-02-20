@@ -120,12 +120,6 @@ namespace EasyCodeGenerate
                                                      MessageBox.Show("detected a new version for easyvs, please use menu easyvs->help->update for update");
                                                  }
                                              });
-
-            ThreadPool.QueueUserWorkItem(delegate
-                                                   {
-                                                       EasyVSStatistics.SendStart();
-                                                   });
-
         }
 
         void DTEEvents_OnBeginShutdown()
