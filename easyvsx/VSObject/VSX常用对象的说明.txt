@@ -1,0 +1,15 @@
+﻿Document:
+	1.Document一定是已经打开的文档，没有打开的文件是没有Document的
+
+
+ProjectItem
+	1.可以是文件夹，也可以是文件。总之就是project下面的一个项
+
+ProjectItems
+	1.是ProjectItem的集合，但是ProjectItem也可以有ProjectItems属性，因为当ProjectItem是
+	  文件夹时可能有子文件
+
+
+TextSpan
+	1.是一个带有文本起始位置信息的类，有点类似两个point的集合
+

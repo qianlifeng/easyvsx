@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
+  <Identifier Id="ad30597b-10a5-4848-a122-a71d2602eef3">
+    <Name>EasyVS</Name>
+    <Author>scott qian</Author>
+    <Version>0.4.1</Version>
+    <Description xml:space="preserve">This add-in provide a couple of functions to simplify your normal operations.</Description>
+    <Locale>2052</Locale>
+    <MoreInfoUrl>http://visualstudiogallery.msdn.microsoft.com/7310649d-87d9-45d2-b7da-99e5b001549e</MoreInfoUrl>
+    <GettingStartedGuide>http://www.cnblogs.com/qianlifeng/archive/2012/01/09/2317625.html</GettingStartedGuide>
+    <Icon>App.ico</Icon>
+    <PreviewImage>preview.png</PreviewImage>
+    <InstalledByMsi>false</InstalledByMsi>
+    <SupportedProducts>
+      <VisualStudio Version="10.0">
+        <Edition>Pro</Edition>
+      </VisualStudio>
+    </SupportedProducts>
+    <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
+  </Identifier>
+  <References>
+    <Reference Id="Microsoft.VisualStudio.MPF" MinVersion="10.0">
+      <Name>Visual Studio MPF</Name>
+    </Reference>
+  </References>
+  <Content>
+    <VsPackage>
+      |%CurrentProject%;PkgdefProjectOutputGroup|
+    </VsPackage>
+  </Content>
+</Vsix>

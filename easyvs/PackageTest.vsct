@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+    <Extern href="stdidcmd.h"/>
+    <!--This header contains the command ids for the menus provided by the shell. -->
+    <Extern href="vsshlids.h"/>
+    <!--Definition of some VSCT specific constants. In this sample we use it for the IDs inside the guidOfficeIcon group. -->
+    <Extern href="msobtnid.h"/>
+
+    <Commands package="guidPackageTestPkg">
+
+        <Groups>
+            <!-- 主菜单 Group -->
+            <Group guid="guidPackageTestCmdSet" id="topMenuGroup">
+                <Parent guid="guidPackageTestCmdSet" id="menuRoot"/>
+            </Group>
+
+            <!-- 子菜单 代码生成 Group-->
+            <Group guid="guidPackageTestCmdSet" id="generateGroup" priority="0x0500">
+                <Parent guid="guidPackageTestCmdSet" id="menuSetting"/>
+            </Group>
+
+            <!-- 子菜单 帮助 Group-->
+            <Group guid="guidPackageTestCmdSet" id="helpMenuGroup" priority="0x0600">
+                <Parent guid="guidPackageTestCmdSet" id="menuHelp"/>
+            </Group>
+
+            <!-- 代码视图-右击 -->
+            <Group guid="codeRightClickCmdSet" id="rootGroup">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
+            </Group>
+
+            <!-- 解决方案-右击-添加 -->
+            <Group guid="solutionRightClickAddCmdSet" id="rootGroup">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CSCD_SOLUTION_ADD"/>
+            </Group>
+
+            <!-- 纯粹快捷键命令group -->
+            <Group guid="nonMenuCommandCmdSet" id="rootGroup">
+                <Parent guid="guidSHLMainMenu" id="IDM_VS_CSCD_SOLUTION_ADD"/>
+            </Group>
+        </Groups>
+
+        <!-- 所有Menu中的项的parent都必须是Groups中的项 -->
+        <Menus>
+            <!-- 主菜单 -->
+            <Menu guid="guidPackageTestCmdSet" id="menuRoot" type="Menu">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_MM_BUILDDEBUGRUN"/>
+                <CommandFlag>AlwaysCreate</CommandFlag>
+                <Strings>
+                    <ButtonText>EasyVS</ButtonText>
+                    <CommandName>EasyVS</CommandName>
+                </Strings>
+            </Menu>
+
+            <!-- 子菜单 设置 -->
+            <!--
+      <Menu guid="guidPackageTestCmdSet" id="menuSetting" type="Menu" priority="5">
+        <Parent guid="guidPackageTestCmdSet" id="topMenuGroup"/>
+        <CommandFlag>AlwaysCreate</CommandFlag>
+        <Strings>
+          <ButtonText>设置</ButtonText>
+          <CommandName>设置</CommandName>
+        </Strings>
+      </Menu>-->
+
+            <!-- 子菜单 Help -->
+            <Menu guid="guidPackageTestCmdSet" id="menuHelp" type="Menu" priority="10">
+                <Parent guid="guidPackageTestCmdSet" id="topMenuGroup"/>
+                <CommandFlag>AlwaysCreate</CommandFlag>
+                <Strings>
+                    <ButtonText>Help</ButtonText>
+                    <CommandName>Help</CommandName>
+                </Strings>
+            </Menu>
+
+
+
+        </Menus>
+
+        <!-- Button的parent只能是group中的一个 -->
+        <Buttons>
+
+            <!-- 设置  -->
+            <Button guid="guidPackageTestCmdSet" id="cmdSetting" priority="1" type="Button">
+                <Parent guid="guidPackageTestCmdSet" id="topMenuGroup" />
+                <Icon guid="settingBitmaps" id="setting"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Setting</CommandName>
+                    <ButtonText>Setting</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- 建议 -->
+            <Button guid="guidPackageTestCmdSet" id="cmdSuggestion" priority="1" type="Button">
+                <Parent guid="guidPackageTestCmdSet" id="helpMenuGroup" />
+                <Icon guid="questionBitmaps" id="question"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Advise</CommandName>
+                    <ButtonText>Advise</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- 更新 -->
+            <Button guid="guidPackageTestCmdSet" id="cmdUpdate" priority="2" type="Button">
+                <Parent guid="guidPackageTestCmdSet" id="helpMenuGroup" />
+                <Icon guid="updateBitmaps" id="update"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Update</CommandName>
+                    <ButtonText>Update</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- 关于 -->
+            <Button guid="guidPackageTestCmdSet" id="cmdAbout" priority="3" type="Button">
+                <Parent guid="guidPackageTestCmdSet" id="helpMenuGroup" />
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>cmdAbout</CommandName>
+                    <ButtonText>About</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- CodeRightClick => 更新模型 -->
+            <Button guid="codeRightClickCmdSet" id="cmdUpdateModel" type="Button">
+                <Parent guid="codeRightClickCmdSet" id="rootGroup"/>
+                <Icon guid="updateBitmaps" id="update"/>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <CommandName>UpdateModel</CommandName>
+                    <ButtonText>UpdateModel</ButtonText>
+                </Strings>
+            </Button>
+
+            <Button guid="codeRightClickCmdSet" id="cmdQuickRegion" type="Button">
+                <Parent guid="codeRightClickCmdSet" id="rootGroup"/>
+                <Icon guid="jinghaoBitmaps" id="jinghao"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Quick Region</CommandName>
+                    <ButtonText>Quick Region</ButtonText>
+                </Strings>
+            </Button>
+          
+            <Button guid="codeRightClickCmdSet" id="cmdMoveToRegion" type="Button">
+                <Parent guid="codeRightClickCmdSet" id="rootGroup"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>Move to Region</CommandName>
+                    <ButtonText>Move to Region</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- SolutionRightClick => 添加 -->
+            <Button guid="solutionRightClickAddCmdSet" id="cmdAddModelProject" type="Button">
+                <Parent guid="solutionRightClickAddCmdSet" id="rootGroup"/>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <CommandName>New Model Project</CommandName>
+                    <ButtonText>New Model Project</ButtonText>
+                </Strings>
+            </Button>
+
+            <!-- fileRightClick => 在window窗体中打开 -->
+            <Button guid="fileRightClickAddCmdSet" id="cmdOpenInExplore" type="Button" priority="0xffff">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_OPEN"/>
+                <Icon guid="folderBitmaps" id="folder"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>OpenInExplore</CommandName>
+                    <ButtonText>Open with Windows Explore</ButtonText>
+                </Strings>
+
+            </Button>
+
+
+            <!-- filemenu => 重启VS -->
+            <Button guid="FileMenuCmdSet" id="cmdRestartVS" type="Button" priority="0xffff">
+                <Parent guid="guidSHLMainMenu" id="IDG_VS_FILE_EXIT"/>
+                <Icon guid="restartBitmaps" id="restart"/>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <CommandName>RestartVS</CommandName>
+                    <ButtonText>Restart Visual Studio</ButtonText>
+                </Strings>
+
+            </Button>
+
+            <Button guid="nonMenuCommandCmdSet" id="cmdCloneCurrentLine" type="Button">
+                <Parent guid="nonMenuCommandCmdSet" id="rootGroup"/>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <CommandName>CloneCurrentLine</CommandName>
+                    <ButtonText>Clone Current line</ButtonText>
+                </Strings>
+            </Button>
+            
+            <Button guid="nonMenuCommandCmdSet" id="cmdGenerateVariable" type="Button">
+                <Parent guid="nonMenuCommandCmdSet" id="rootGroup"/>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <Strings>
+                    <CommandName>GenerateVariable</CommandName>
+                    <ButtonText>GenerateVariable</ButtonText>
+                </Strings>
+            </Button>
+        </Buttons>
+
+        <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+        <Bitmaps>
+            <Bitmap guid="folderBitmaps" href="ButtonBitmaps\folder.png" usedList="folder"/>
+            <Bitmap guid="jinghaoBitmaps" href="ButtonBitmaps\jinghao.png" usedList="jinghao"/>
+            <Bitmap guid="settingBitmaps" href="ButtonBitmaps\setting.png" usedList="setting"/>
+            <Bitmap guid="questionBitmaps" href="ButtonBitmaps\question.png" usedList="question"/>
+            <Bitmap guid="updateBitmaps" href="ButtonBitmaps\update.png" usedList="update"/>
+            <Bitmap guid="restartBitmaps" href="ButtonBitmaps\restart.png" usedList="restart"/>
+        </Bitmaps>
+
+    </Commands>
+
+    <KeyBindings>
+        <KeyBinding guid="codeRightClickCmdSet" id="cmdQuickRegion" editor="guidVSStd97"
+                    key1="e" mod1="Control" mod2="Control" key2="r">
+        </KeyBinding>
+        <KeyBinding guid="codeRightClickCmdSet" id="cmdMoveToRegion" editor="guidVSStd97"
+                    key1="e" mod1="Control" mod2="Control" key2="m">
+        </KeyBinding>
+        <KeyBinding guid="nonMenuCommandCmdSet" id="cmdCloneCurrentLine" editor="guidVSStd97"
+                    key1="e" mod1="Control" mod2="Control" key2="e">
+        </KeyBinding>
+        <KeyBinding guid="nonMenuCommandCmdSet" id="cmdGenerateVariable" editor="guidVSStd97"
+                    key1="e" mod1="Control" mod2="Control" key2="v">
+        </KeyBinding>
+    </KeyBindings>
+
+    <Symbols>
+        <!-- This is the package guid. -->
+        <GuidSymbol name="guidPackageTestPkg" value="{ad30597b-10a5-4848-a122-a71d2602eef3}" />
+
+        <!-- This is the guid used to group the menu commands together -->
+        <GuidSymbol name="guidPackageTestCmdSet" value="{29d441c5-58be-4476-b35c-8a4955793e26}">
+            <IDSymbol name="topMenuGroup" value="0x1020" />
+            <IDSymbol name="helpMenuGroup" value="0x1021" />
+            <IDSymbol name="generateGroup" value="0x1022" />
+
+            <IDSymbol name="menuRoot" value="0x0010"/>
+            <IDSymbol name="menuHelp" value="0x0020"/>
+            <IDSymbol name="menuSetting" value="0x0030"/>
+
+            <IDSymbol name="cmdSuggestion" value="0x0100" />
+            <IDSymbol name="cmdAbout" value="0x0101" />
+            <IDSymbol name="cmdUpdate" value="0x0102"/>
+            <IDSymbol name="cmdSetting" value="0x0110" />
+
+        </GuidSymbol>
+
+        <GuidSymbol name="codeRightClickCmdSet" value="{1496A755-94DE-11D0-8C3F-00C04FC2AAE2}">
+
+            <IDSymbol name="rootGroup" value="0x8000"/>
+
+            <IDSymbol name="cmdUpdateModel" value="9999" />
+            <IDSymbol name="cmdQuickRegion" value="10000"/>
+            <IDSymbol name="cmdMoveToRegion" value="10001"/>
+          
+
+        </GuidSymbol>
+
+        <!-- 这里的solutionRightClickAddCmdSet的value是新建的 -->
+        <GuidSymbol name="solutionRightClickAddCmdSet" value="{68017D43-B813-4ACE-8CE5-EA6A393088B6}">
+            <IDSymbol name="rootGroup" value="1"/>
+
+            <IDSymbol name="cmdAddModelProject" value="10"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="fileRightClickAddCmdSet" value="{DAF9DA28-285E-4D61-A350-3FB771B46D66}">
+
+            <IDSymbol name="cmdOpenInExplore" value="10"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="FileMenuCmdSet" value="{AAF9DA28-285E-4D61-1234-3FB771B46D55}">
+
+            <IDSymbol name="cmdRestartVS" value="10"/>
+        </GuidSymbol>
+
+        <GuidSymbol name="nonMenuCommandCmdSet" value="{98D17D48-B813-4ACE-8EE5-BA6A395588B6}">
+            <IDSymbol name="rootGroup" value="1"/>
+            <IDSymbol name="cmdCloneCurrentLine" value="10"/>
+            <IDSymbol name="cmdGenerateVariable" value="20"/>
+        </GuidSymbol>
+
+        <!-- 每个图片都要一个单独的guid symbol-->
+        <GuidSymbol name="folderBitmaps" value="{dcae7c84-8e91-4f8a-227b-95ccb0f51234}" >
+            <IDSymbol name="folder" value="1" />
+        </GuidSymbol>
+        <GuidSymbol name="jinghaoBitmaps" value="{dcae7c84-8e91-1234-227b-95ccaaa51234}" >
+            <IDSymbol name="jinghao" value="1" />
+        </GuidSymbol>
+        <GuidSymbol name="settingBitmaps" value="{dcae7c84-8e91-1234-227b-95ccaaa51232}" >
+            <IDSymbol name="setting" value="1" />
+        </GuidSymbol>
+        <GuidSymbol name="questionBitmaps" value="{dcae7c84-8e91-1234-227b-95ccaaa51233}" >
+            <IDSymbol name="question" value="1" />
+        </GuidSymbol>
+        <GuidSymbol name="updateBitmaps" value="{dcae7c84-8e91-1234-227b-95ccaaa51231}" >
+            <IDSymbol name="update" value="1" />
+        </GuidSymbol>
+        <GuidSymbol name="restartBitmaps" value="{dcae7c84-8e91-1234-227b-95ccaaa51241}" >
+            <IDSymbol name="restart" value="1" />
+        </GuidSymbol>
+    </Symbols>
+
+</CommandTable>

@@ -1,0 +1,6 @@
+﻿
+在代码视图中右键单击出现的菜单的Group的parent
+	   <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
+
+解决方案右击=》添加的group的parent
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CSCD_SOLUTION_ADD"/>
